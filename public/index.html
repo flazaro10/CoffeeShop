@@ -4,29 +4,107 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Descubre cafés de especialidad para preparar en casa y cinco cafeterías imprescindibles en Madrid.">
-  <meta name="theme-color" content="#172b22">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='9' y='9' width='14' height='14' transform='rotate(45 16 16)' fill='%23b6b3f4'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#06070f">
   <title>CoffeeShop | Café de especialidad en Madrid</title>
+  <style>html,body{background:#06070f;color:#eef0f8}</style>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="story.css">
+  <script type="importmap">
+    {
+      "imports": {"three": "./vendor/three.module.js"},
+      "integrity": {
+        "./vendor/three.module.js": "sha384-8FCZ1eVO6it4+pbec2aDtnTrwjWXZLJRC+MAGCIPDgsYnUrl/E0A2YlF8ioMKI/J",
+        "./vendor/three.core.js": "sha384-dw2ooPewaEIrAgl6oFDBmmBWCE9oW9LxRGcfwZ0hLvEprzo202wXl7vCYHRlSnOT"
+      }
+    }
+  </script>
+  <script>
+    document.documentElement.classList.add("loading");
+    window.storyFallback = setTimeout(() => {
+      document.documentElement.classList.remove("loading");
+      document.getElementById("loader")?.remove();
+    }, 4000);
+  </script>
   <script src="app.js" defer></script>
 </head>
 <body>
-  <header class="top">
-    <div class="wrap nav">
-      <a class="brand" href="#" aria-label="CoffeeShop, inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h12v5a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5Zm12 1h2a2 2 0 0 1 0 4h-2M3 21h18M9 5V3m4 2V3"/></svg>Coffee<span>Shop</span></a>
-      <nav aria-label="Navegación principal"><a href="#cafes">Nuestros cafés</a><a href="#madrid">Guía de Madrid</a></nav>
-      <button class="bag" type="button" id="open-bag" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l2 13H3L5 8Zm4 2V6a3 3 0 1 1 6 0v4"/></svg><span class="bag-label">Cesta</span> <span id="bag-count">0</span></button>
-    </div>
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <div id="loader" aria-hidden="true"><span class="wordmark"><i></i>CoffeeShop</span></div>
+
+  <header class="story-nav">
+    <a class="wordmark" href="#inicio" aria-label="CoffeeShop, inicio"><i></i>CoffeeShop</a>
+    <nav aria-label="Navegación principal">
+      <a href="#origen" data-chapter="1">Origen</a>
+      <a href="#preparacion" data-chapter="4">Preparación</a>
+      <a href="#cafes">Cafés</a>
+      <a href="#madrid">Madrid</a>
+    </nav>
+    <button class="bag" type="button" id="open-bag" aria-haspopup="dialog">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l2 13H3L5 8Zm4 2V6a3 3 0 1 1 6 0v4"/></svg><span class="bag-label">Cesta</span> <span id="bag-count">0</span>
+    </button>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="wrap hero-copy">
-        <p class="eyebrow"><span></span> Café de especialidad · Madrid</p>
-        <h1>Madrid, taza<br>a <em>taza.</em></h1>
-        <p class="intro">Descubre cafés de origen para preparar en casa y los rincones de Madrid donde una buena taza merece tiempo.</p>
-        <div class="hero-actions"><a class="button button-warm" href="#cafes">Explorar cafés <span aria-hidden="true">→</span></a><a class="button button-outline" href="#madrid">Ver guía de Madrid <span aria-hidden="true">↗</span></a></div>
-      </div>
-    </section>
+    <div class="story">
+      <section class="chapter left" id="inicio">
+        <div class="chapter-frame"><div class="chapter-copy">
+          <h1>Madrid, taza a taza.</h1>
+          <p>Cafés de origen para preparar en casa y cinco paradas de especialidad para descubrir Madrid.</p>
+          <div class="story-actions"><a class="pill" href="#cafes">Explorar cafés</a><a class="pill ghost" href="#madrid">Guía de Madrid</a></div>
+        </div></div>
+      </section>
+      <section class="chapter left" id="origen">
+        <div class="chapter-frame"><div class="chapter-copy">
+          <h2>Cada origen tiene su carácter.</h2>
+          <p>Altitud, clima y variedad dejan su huella en el grano. Descubre tres perfiles de Colombia, Etiopía y Brasil.</p>
+        </div></div>
+      </section>
+      <section class="chapter bottom" id="tueste">
+        <div class="chapter-frame"><div class="chapter-copy">
+          <h2>El tueste cambia la taza.</h2>
+          <p>El calor desarrolla los aromas del café. El punto de tueste influye en cómo percibes su dulzor, su acidez y su amargor.</p>
+        </div></div>
+      </section>
+      <section class="chapter right" id="aromas">
+        <div class="chapter-frame"><div class="chapter-copy">
+          <h2>De jazmín a chocolate.</h2>
+          <p>Sidama aporta un perfil floral, Huila recuerda al caramelo y Minas Gerais se acerca al cacao y a la avellana.</p>
+        </div></div>
+      </section>
+      <section class="chapter left" id="preparacion">
+        <div class="chapter-frame"><div class="chapter-copy">
+          <h2>Un buen punto de partida.</h2>
+          <p>Para filtro, prueba 15 gramos de café con 250 gramos de agua. Ajusta la molienda y la proporción a tu gusto.</p>
+        </div></div>
+      </section>
+      <section class="chapter right" id="espresso">
+        <div class="chapter-frame"><div class="chapter-copy">
+          <h2>El carácter del espresso.</h2>
+          <p>La molienda fina y una extracción corta concentran el café. Con leche, aparecen otros matices sin perder su aroma.</p>
+        </div></div>
+      </section>
+      <section class="chapter bottom" id="ritual">
+        <div class="chapter-frame"><div class="chapter-copy">
+          <h2>Deja que la taza se enfríe.</h2>
+          <p>Prueba el mismo café a distintas temperaturas. Al enfriarse, puede resultar más fácil distinguir su acidez y sus aromas.</p>
+        </div></div>
+      </section>
+      <section class="chapter left" id="ruta">
+        <div class="chapter-frame"><div class="chapter-copy">
+          <h2>Una ruta por Madrid.</h2>
+          <p>De Malasaña a Lavapiés, cinco cafeterías donde probar otros orígenes y formas de preparar el café.</p>
+          <div class="story-actions"><a class="pill ghost" href="#madrid">Abrir el mapa</a></div>
+        </div></div>
+      </section>
+      <section class="chapter right" id="seleccion">
+        <div class="chapter-frame"><div class="chapter-copy">
+          <h2>Encuentra tu próxima taza.</h2>
+          <p>Elige un perfil para tu rutina: dulce, floral o con notas de chocolate.</p>
+          <div class="story-actions"><a class="pill" href="#cafes">Ver selección</a></div>
+        </div></div>
+      </section>
+    </div>
 
     <section class="collection wrap" id="cafes">
       <div class="section-title">
@@ -56,6 +134,9 @@
     </section>
   </main>
 
+  <div class="detail" data-chapter="2" data-part="bean" aria-hidden="true"><span>Grano tostado</span></div>
+  <div class="detail" data-chapter="5" data-part="surface" aria-hidden="true"><span>Crema del café</span></div>
+
   <footer class="footer"><div class="wrap"><a class="brand" href="#">Coffee<span>Shop</span></a><p>Café de especialidad · Madrid</p><a href="#">Volver arriba ↑</a></div></footer>
 
   <dialog id="basket" aria-labelledby="basket-title">
@@ -65,5 +146,6 @@
     <p class="basket-note">Catálogo de muestra. Los pedidos y pagos aún no están disponibles.</p>
   </dialog>
   <p id="notice" class="sr-only" role="status"></p>
+  <script type="module" src="story.js"></script>
 </body>
 </html>
